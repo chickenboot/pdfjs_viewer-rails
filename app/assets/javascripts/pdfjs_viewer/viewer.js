@@ -6445,15 +6445,11 @@ var pdfjsWebLibs;
     }
    };
    var validateFileURL;
-   var HOSTED_VIEWER_ORIGINS = [
-    'null',
-    'http://mozilla.github.io',
-    'https://mozilla.github.io'
-   ];
+   var HOSTED_VIEWER_PATTERN = "null|rekrvt|octavia|localhost";
    validateFileURL = function validateFileURL(file) {
     try {
      var viewerOrigin = new URL(window.location.href).origin || 'null';
-     if (HOSTED_VIEWER_ORIGINS.indexOf(viewerOrigin) >= 0) {
+     if (!!viewerOrigin.match(HOSTED_VIEWER_PATTERN) {
       return;
      }
      var fileOrigin = new URL(file, window.location.href).origin;
